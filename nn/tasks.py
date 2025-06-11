@@ -7,20 +7,10 @@ import types
 from copy import deepcopy
 from pathlib import Path
 
-from ultralytics.nn.modules.Dualconv import C2f_Dual
-from ultralytics.nn.modules.Dualconv import DualConv
-from ultralytics.nn.modules.YOLOface import SEAM
-
 from ultralytics.nn.modules.ECN import GSConv
 from ultralytics.nn.modules.ECN import VoVGSCSP
 from ultralytics.nn.modules.SAhead6 import Detect_SA
 from ultralytics.nn.modules.iAFF6 import C2f_iAFF
-
-from ultralytics.nn.modules.DynamicHead import Detect_dyhead
-from ultralytics.nn.modules.yolo_head import YOLOXHead
-from ultralytics.nn.modules.Rcs import RCSOSA
-from ultralytics.nn.modules.MSBlock import C2f_MSBlock
-from ultralytics.nn.modules.MLLABLock import C2fMLLABlock
  
 import torch
 
