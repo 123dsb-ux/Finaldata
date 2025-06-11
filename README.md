@@ -5,3 +5,5 @@ Download Link：https://drive.google.com/file/d/1F6Oysd1-B3FSvqYpQqLci9e9KPiPgm0
 AEL-YOLO is a YOLOv8n-based model for fire and smoke detection. In AEL-YOLO, we propose a plug-and-play Asymmetric Parallel Convolution (APConv) module. APConv can be obtained from iAFF6.py or SAhead6.py. Based on APConv, we design an Attention Feature Fusion module (C2f-AFF) and a Lightweight Self-attention Detect head (LSADetect). These components significantly improve detection performance and are successfully integrated into different YOLO-based models (v8–v12). In addition, we have designed Efficient Cross-phase Network (ECN) module to further improve the computational efficiency. Experimental results on the Finaldata show that our method improves mAP@50 by 4.7% and mAP@50–95 by 4.5% compared to the YOLOv8n baseline. 
 
 If you would like to use our model, please download the ultralytics framework. https://github.com/ultralytics/ultralytics/blob/main/ultralytics
+
+![Image text](https://github.com/123dsb-ux/Finaldata/blob/main/Figure.TIF)
