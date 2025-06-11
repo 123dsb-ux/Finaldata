@@ -29,7 +29,7 @@ class Conv(nn.Module):
         """Perform transposed convolution of 2D data."""
         return self.act(self.conv(x))
  
-class DualConv(nn.Module):
+class APConv(nn.Module):
     """非对称卷积分支"""
     def __init__(self, in_channels, out_channels, stride=1, g=4):
         """
@@ -200,13 +200,13 @@ class AFF(nn.Module):
         return xo
 
 class C2f_iAFF(nn.Module):
-    """改进的CSP结构（用DualConv替换原Conv）"""
+    """改进的CSP结构（用APConv替换原Conv）"""
     def __init__(self, c1, c2, n=1, shortcut=False, g=4, e=0.5):  # 修改：新增g参数传递
         super().__init__()
         self.c = int(c2 * e)
         # 修改：将cv1和cv2从Conv替换为DualConv
-        self.cv1 = DualConv(c1, 2 * self.c, stride=1, g=g)  # 输入c1，输出2*self.c，stride=1
-        self.cv2 = DualConv((2 + n) * self.c, c2, stride=1, g=g) 
+        self.cv1 = APConv(c1, 2 * self.c, stride=1, g=g)  # 输入c1，输出2*self.c，stride=1
+        self.cv2 = APConv((2 + n) * self.c, c2, stride=1, g=g) 
         self.m = nn.ModuleList(Bottleneck(self.c, self.c, shortcut, g, e=1.0) for _ in range(n))
 
     def forward(self, x):
