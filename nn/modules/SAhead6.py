@@ -73,8 +73,8 @@ class Conv(nn.Module):
         """Perform transposed convolution of 2D data."""
         return self.act(self.conv(x))
 
-# 添加 DualConv 类
-class DualConv(nn.Module):
+# 添加 APConv 类
+class APConv(nn.Module):
     """非对称卷积分支"""
     def __init__(self, in_channels, out_channels, stride=1, g=4):
         """
@@ -258,7 +258,7 @@ class ATT(nn.Module):
         return out
  
  
-# 修改 Detect_SA 中的卷积为 DualConv
+# 修改 Detect_SA 中的卷积为 APConv
 class Detect_SA(nn.Module):
     """YOLOv8 Detect head for detection models."""
     dynamic = False  # force grid reconstruction
@@ -277,8 +277,8 @@ class Detect_SA(nn.Module):
         self.stride = torch.zeros(self.nl)  # strides computed during build
         c2, c3 = max((16, ch[0] // 4, self.reg_max * 4)), max(ch[0], min(self.nc, 100))  # channels
         self.cv2 = nn.ModuleList(
-            nn.Sequential(DualConv(x, c2, stride=1),  Self_Attn(c2), nn.Conv2d(c2, 4 * self.reg_max, 1)) for x in ch)
-        self.cv3 = nn.ModuleList(nn.Sequential(DualConv(x, c3, stride=1), Self_Attn(c3),  nn.Conv2d(c3, self.nc, 1)) for x in ch)
+            nn.Sequential(APConv(x, c2, stride=1),  Self_Attn(c2), nn.Conv2d(c2, 4 * self.reg_max, 1)) for x in ch)
+        self.cv3 = nn.ModuleList(nn.Sequential(APConv(x, c3, stride=1), Self_Attn(c3),  nn.Conv2d(c3, self.nc, 1)) for x in ch)
         self.dfl = DFL(self.reg_max) if self.reg_max > 1 else nn.Identity()
 
 
