@@ -336,7 +336,7 @@ if __name__ == "__main__":
     image = [image1, image2, image3]
     channel = (64, 128, 256)
     # Model
-    mobilenet_v1 = Detect_SA(nc=80, ch=channel)
+    mobilenet_v1 = Detect_SA(nc=2, ch=channel)
  
     out = mobilenet_v1(image)
     print(out)
