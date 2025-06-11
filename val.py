@@ -2,11 +2,11 @@ from ultralytics import YOLO
 
 if __name__ == '__main__':
     # 加载模型
-    model = YOLO(r'/home/fuwuqi/test/anaconda3/envs/dsb/lib/python3.8/site-packages/ultralytics/runs/train/unit287/weights/best.pt')
+    model = YOLO(r'best.pt')
     # 验证模型
     metrics=model.val(
         val=True,  # (bool) 在训练期间进行验证/测试/d
-        data='/home/fuwuqi/test/DongShiBo/dataset/FASDD/dataset.yaml',
+        data='dataset.yaml',
         split='val',  # (str) 用于验证的数据集拆分，例如'val'、'test'或'train'
         batch=4,  # (int) 每批的图像数量（-1 为自动批处理）
         imgsz=640,  # 输入图像的大小，可以是整数或w，h
