@@ -204,7 +204,7 @@ class C2f_iAFF(nn.Module):
     def __init__(self, c1, c2, n=1, shortcut=False, g=4, e=0.5):  # 修改：新增g参数传递
         super().__init__()
         self.c = int(c2 * e)
-        # 修改：将cv1和cv2从Conv替换为DualConv
+        
         self.cv1 = APConv(c1, 2 * self.c, stride=1, g=g)  # 输入c1，输出2*self.c，stride=1
         self.cv2 = APConv((2 + n) * self.c, c2, stride=1, g=g) 
         self.m = nn.ModuleList(Bottleneck(self.c, self.c, shortcut, g, e=1.0) for _ in range(n))
