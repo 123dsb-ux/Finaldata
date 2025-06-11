@@ -1,20 +1,18 @@
 import os
 os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
 import sys
-sys.path.append("/home/fuwuqi/test/anaconda3/envs/dsb/lib/python3.8/site-packages/ultralytics")
+sys.path.append("ultralytics")
 
 from ultralytics import YOLO
-
-
 
 if __name__ == '__main__':
    
     # 加载模型
-    model = YOLO(r'/home/fuwuqi/test/anaconda3/envs/dsb/lib/python3.8/site-packages/ultralytics/yaml/C2f-AFF+ECN+LSADetect.yaml')
-    #model = YOLO(r'/home/fuwuqi/test/anaconda3/envs/dsb/lib/python3.8/site-packages/ultralytics/yaml/ECN.yaml').load("/home/fuwuqi/test/anaconda3/envs/dsb/lib/python3.8/site-packages/ultralytics/runs/train/unit211/weights/best.pt")  # 使用预训练权重训练
+    model = YOLO(r'C2f-AFF+ECN+LSADetect.yaml')
+    #model = YOLO(r'ECN.yaml').load("best.pt")  # 使用预训练权重训练
     # 训练参数 ----------------------------------------------------------------------------------------------
     model.train(
-        data='/home/fuwuqi/test/DongShiBo/dataset/FASDD/dataset.yaml',
+        data='dataset.yaml',
         epochs=200,  # (int) 训练的周期数
         patience=50,  # (int) 等待无明显改善以进行早期停止的周期数
         batch=16,  # (int) 每批次的图像数量（-1 为自动批处理） 
