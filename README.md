@@ -6,4 +6,4 @@ AEL-YOLO is a YOLOv8n-based model for fire and smoke detection. In AEL-YOLO, we 
 
 If you would like to use our model, please download the ultralytics framework. https://github.com/ultralytics/ultralytics/blob/main/ultralytics
 
-![Image text](https://github.com/123dsb-ux/Finaldata/blob/main/Figure.TIF)
+![Image text](https://github.com/123dsb-ux/Finaldata/blob/main/Figure.png)
